@@ -1,9 +1,19 @@
+/*
+ * @Author: laf
+ * @Date: 2021-07-12 20:13:31
+ * @LastEditTime: 2021-07-12 19:47:02
+ * @LastEditors: laf
+ * @Description:
+ * @FilePath: \laf-rujie\common\jwt.go
+ * ©低空飞行工作室(http://laf.ltd)
+ */
 package common
 
 import (
+	"time"
+
 	"github.com/golang-jwt/jwt"
 	"laf.ltd/rujie/model"
-	"time"
 )
 
 var jwtkey = []byte("a_secret_correct")

@@ -1,0 +1,7 @@
+# service
+server:
+  port: 8080
+
+# sqlite
+sqlite:
+   dbName: rujie.db

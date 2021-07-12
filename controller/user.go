@@ -1,10 +1,13 @@
 package controller
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"laf.ltd/rujie/model"
+	"laf.ltd/rujie/model/request"
+	"laf.ltd/rujie/model/response"
 	"laf.ltd/rujie/service"
-	"net/http"
 )
 
 // UserController UserController
