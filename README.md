@@ -1,0 +1,2 @@
+# rujie
+rujie blog
