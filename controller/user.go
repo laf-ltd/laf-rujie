@@ -1,3 +1,12 @@
+/*
+ * @Author: laf
+ * @Date: 2021-07-14 08:25:06
+ * @LastEditTime: 2021-07-14 11:51:34
+ * @LastEditors: laf
+ * @Description:
+ * @FilePath: \laf-rujie\controller\user.go
+ * ©低空飞行工作室(http://laf.ltd)
+ */
 package controller
 
 import (
@@ -10,13 +19,7 @@ import (
 	"laf.ltd/rujie/service"
 )
 
-// UserController UserController
-type userController struct {
-}
-
-var UserController = userController{}
-
-func (u userController) Login(ctx *gin.Context) {
+func Login(ctx *gin.Context) {
 	requestUser := model.User{}
 	ctx.Bind(&requestUser)
 	data, err := service.UserService.Login(requestUser)
@@ -27,7 +30,7 @@ func (u userController) Login(ctx *gin.Context) {
 	response.Success(ctx, data, "登录成功")
 }
 
-func (u userController) Register(ctx *gin.Context) {
+func Register(ctx *gin.Context) {
 	requestUser := model.User{}
 	ctx.Bind(&requestUser)
 
@@ -39,7 +42,7 @@ func (u userController) Register(ctx *gin.Context) {
 	response.Success(ctx, data, "注册成功")
 }
 
-func (u userController) UserInfo(ctx *gin.Context) {
+func UserInfo(ctx *gin.Context) {
 	user, isOk := ctx.Get("user")
 	if !isOk {
 		response.Error(ctx, http.StatusBadRequest, "获取用户信息失败")

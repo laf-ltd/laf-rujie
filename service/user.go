@@ -1,7 +1,17 @@
+/*
+ * @Author: laf
+ * @Date: 2021-07-14 08:25:06
+ * @LastEditTime: 2021-07-14 11:57:40
+ * @LastEditors: laf
+ * @Description:
+ * @FilePath: \laf-rujie\service\user.go
+ * ©低空飞行工作室(http://laf.ltd)
+ */
 package service
 
 import (
 	"errors"
+
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 	"laf.ltd/rujie/common"
@@ -54,7 +64,7 @@ func (u userService) Register(user model.User) (gin.H, error) {
 		return nil, errors.New("登录名不能少于3位")
 	}
 
-	if len(user.Phone) != 11 {
+	if len(user.Mail) != 11 {
 		return nil, errors.New("手机号必须为11位")
 	}
 
@@ -71,21 +81,14 @@ func (u userService) Register(user model.User) (gin.H, error) {
 		return nil, errors.New("加密错误")
 	}
 
-	newUser := model.User{
-		Name:     user.Name,
-		Phone:    user.Phone,
-		Password: string(encryptionPassword),
-	}
+	user.Password = string(encryptionPassword)
 
-	global.R_DB.Create(&newUser)
+	global.R_DB.Create(&user)
 	return gin.H{}, nil
 }
 
 func isNameExist(name string) bool {
 	var user model.User
 	global.R_DB.Where("name = ?", name).First(&user)
-	if user.ID != 0 {
-		return true
-	}
-	return false
+	return user.ID != 0
 }

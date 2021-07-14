@@ -1,7 +1,7 @@
 /*
  * @Author: laf
  * @Date: 2021-07-12 19:50:35
- * @LastEditTime: 2021-07-12 19:50:35
+ * @LastEditTime: 2021-07-14 11:35:49
  * @LastEditors: laf
  * @Description:
  * @FilePath: \laf-rujie\model\user.go
@@ -13,7 +13,10 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
-	Name     string `gorm:"varchar(20);not null"`
-	Phone    string `gorm:"varchar(11);not null;unique"`
-	Password string `gorm:"size:255;not null"`
+	Name     string `gorm:"varchar(20); not null ; comment:用户登录名"`
+	Password string `gorm:"size:100; comment:用户登录密码 "`
+	Mail     string `gorm:"size:150; comment:用户邮箱"`
+	Url      string `gorm:"size:150; comment:用户主页"`
+	Group    string `gorm:"size:16; comment:用户组 ; default: visitor"`
+	AuthCode string `gorm:"size:64; comment:认证码"`
 }
