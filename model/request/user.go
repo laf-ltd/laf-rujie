@@ -21,19 +21,19 @@ type LoginRequest struct {
 type RegisterRequest struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`
-	Phone    string `json:"phone"`
+	Mail    string `json:"mail"`
 }
 
 // UserRequest UserRequest
 type UserRequest struct {
 	Name  string `json:"name"`
-	Phone string `json:"phone"`
+	Mail string `json:"mail"`
 }
 
 // ToUserRequest ToUserRequest
 func ToUserRequest(user model.User) UserRequest {
 	return UserRequest{
 		Name:  user.Name,
-		Phone: user.Phone,
+		Mail: user.Mail,
 	}
 }

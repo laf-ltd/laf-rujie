@@ -13,10 +13,10 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
-	Name     string `gorm:"varchar(20); not null ; comment:用户登录名"`
-	Password string `gorm:"size:100; comment:用户登录密码 "`
-	Mail     string `gorm:"size:150; comment:用户邮箱"`
-	Url      string `gorm:"size:150; comment:用户主页"`
-	Group    string `gorm:"size:16; comment:用户组 ; default: visitor"`
-	AuthCode string `gorm:"size:64; comment:认证码"`
+	Name     string `gorm:"size:32; not null ; comment:用户登录名"`
+	Password string `gorm:"size:64; comment:用户登录密码 "`
+	Mail       string `gorm:"size:150; comment:用户邮箱"`
+	Url        string `gorm:"size:150; comment:用户主页"`
+	ScreenName string `gorm:"size:32;comment:用户昵称"`
+	Group      string `gorm:"size:16; comment:用户组 ; default: visitor"`
 }
